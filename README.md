@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # PlantUML API Service
 
 ## Table of Contents
