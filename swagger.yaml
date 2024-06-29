@@ -1,0 +1,67 @@
+openapi: 3.0.0
+info:
+  title: PlantUML API Service
+  description: A service that generates UML diagrams from PlantUML code
+  version: 1.0.0
+  contact:
+    name: API Support
+    email: support@example.com
+servers:
+  - url: http://localhost:3000/api
+    description: Local development server
+paths:
+  /generate-uml:
+    post:
+      summary: Generate UML Diagram
+      description: Generates a UML diagram from the provided PlantUML code
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UMLRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UMLResponse'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    UMLRequest:
+      type: object
+      required:
+        - code
+      properties:
+        code:
+          type: string
+          description: PlantUML code to generate the diagram
+          example: "@startuml\nAlice -> Bob: Hello\nBob --> Alice: Hi there\n@enduml"
+    UMLResponse:
+      type: object
+      properties:
+        imageUrl:
+          type: string
+          description: URL of the generated UML diagram image
+          example: "http://localhost:3000/images/12345678-1234-1234-1234-123456789012.png"
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: "Failed to generate UML diagram"
