@@ -7,7 +7,7 @@ info:
     name: API Support
     email: support@chira.tech
 servers:
-  - url: https://uml.chira.tech:3000/api
+  - url: http://uml.chira.tech:3000/api
     description: Production server
 paths:
   /generate-uml:
@@ -51,17 +51,13 @@ components:
           type: string
           description: PlantUML code to generate the diagram
           example: "@startuml\nAlice -> Bob: Hello\nBob --> Alice: Hi there\n@enduml"
-        diagramType:
-          type: string
-          description: Type of diagram (optional, for informational purposes)
-          enum: [activity, class, component, deployment, er, gantt, mindmap, object, sequence, state, timing, usecase, archimate, nwdiag, salt, json, yaml, math]
     UMLResponse:
       type: object
       properties:
         imageUrl:
           type: string
           description: URL of the generated diagram image
-          example: "https://uml.chira.tech/images/12345678-1234-1234-1234-123456789012.png"
+          example: "http://uml.chira.tech:3000/images/12345678-1234-1234-1234-123456789012.png"
     Error:
       type: object
       properties:
