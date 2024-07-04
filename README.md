@@ -37,7 +37,6 @@ The PlantUML API Service is a robust Node.js-based RESTful API that converts Pla
 2. Navigate to the project directory:
    ```
    cd plantuml-api-service
-   mkdir images
    ```
 3. Install dependencies:
    ```
